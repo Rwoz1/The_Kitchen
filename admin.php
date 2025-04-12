@@ -1,3 +1,5 @@
+
+
 <?php
 // الاتصال بقاعدة البيانات
 $host = "localhost";
@@ -81,6 +83,7 @@ $result = $conn->query("SELECT * FROM products ORDER BY expiry_date ASC");
 
     <!-- نموذج إضافة منتج جديد -->
     <form method="POST" enctype="multipart/form-data">
+
         <label>اسم المنتج:</label>
         <input type="text" name="name" required><br><br>
 
@@ -98,7 +101,8 @@ $result = $conn->query("SELECT * FROM products ORDER BY expiry_date ASC");
 
         <button type="submit" name="add_product">إضافة المنتج</button>
     </form>
-
+       <a href="login/register.php"><button>اضافة مشرف جديد</button></a> 
+       <a href="users.php"><button>الرجوع الى صفحه المستخدمين</button></a> 
     <!-- عرض جميع المنتجات -->
     <h3>المنتجات المضافة</h3>
     <table>
@@ -110,7 +114,7 @@ $result = $conn->query("SELECT * FROM products ORDER BY expiry_date ASC");
             <th>ملاحظات</th>
             <th>الإجراءات</th>
         </tr>
-
+        admin.php
         <?php while ($row = $result->fetch_assoc()): ?>
         <tr>
             <td><img src="uploads/<?php echo $row['image']; ?>" width="50"></td>

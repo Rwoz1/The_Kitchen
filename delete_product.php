@@ -9,7 +9,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 if ($conn->connect_error) {
     die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
 }
-
+    
 // التحقق من وجود معرف المنتج للحذف
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

@@ -1,0 +1,113 @@
+/* ضبط الهوامش الافتراضية للجسم ومساحة العرض */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* تعيين الخط الأساسي */
+    direction: rtl; /* تعيين اتجاه النص من اليمين إلى اليسار */
+}
+
+/* تزيين خلفية النجوم */
+.background {
+    position: fixed; /* تعيين الخلفية كعنصر ثابت */
+    width: 100%;
+    height: 100%;
+    background: url('IMG_9346.JPG') no-repeat center center fixed; /* تعيين صورة الخلفية */
+    background-size: cover; /* تغطية الخلفية بالكامل */
+}
+
+/* تأثير الضبابية */
+.overlay {
+    position: absolute; /* تعيين العنصر كعنصر مطلق */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* تعيين لون الخلفية الشفافة */
+}
+
+/* تصميم صندوق النموذج */
+.login-box {
+    position: relative; /* تعيين العنصر كعنصر نسبي */
+    width: 300px;
+    margin: 100px auto; /* محاذاة العنصر في المنتصف */
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.576); /* تعيين خلفية بيضاء شبه شفافة */
+    box-shadow: 0 0 10px #8400ff(0, 0, 0, 0.5); /* تعيين ظل للصندوق */
+    border-radius: 30px; /* تعيين حواف دائرية */
+    text-align: center; /* محاذاة النص في المنتصف */
+}
+
+/* تنسيق العنوان */
+.login-box h2 {
+    margin: 0 0 20px; /* تعيين الهوامش */
+    padding: 0;
+    color: #333; /* تعيين لون النص */
+}
+
+/* تنسيق حقول الإدخال */
+.textbox {
+    margin-bottom: 20px; /* تعيين الهامش السفلي */
+}
+
+.textbox input {
+    width: 100%; /* تعيين عرض الحقل 100% */
+    padding: 10px; /* تعيين حشوة الحقل */
+    background: #f0f0f0; /* تعيين خلفية الحقل */
+    border: 1px solid #ccc; /* تعيين حدود الحقل */
+    border-radius: 5px; /* تعيين حواف دائرية */
+    box-sizing: border-box; /* تعيين حجم الصندوق */
+}
+
+/* تنسيق الزر */
+.btn {
+    width: 100%; /* تعيين عرض الزر 100% */
+    padding: 10px; /* تعيين حشوة الزر */
+    background: #9e67d2; /* تعيين لون الخلفية */
+    border: none; /* إزالة الحدود */
+    border-radius: 5px; /* تعيين حواف دائرية */
+    color: white; /* تعيين لون النص */
+    font-size: 16px; /* تعيين حجم الخط */
+    cursor: pointer; /* تعيين مؤشر الفأرة */
+}
+
+/* تنسيق النص داخل الزر عند التحويم */
+.btn:hover {
+    background: #7900ea; /* تغيير لون الخلفية عند التحويم */
+}
+
+/* تنسيق الروابط */
+a {
+    color: #9e67d2; /* تعيين لون النص */
+    text-decoration: none; /* إزالة خط التسطير */
+}
+
+/* تنسيق الروابط عند التحويم */
+a:hover {
+    text-decoration: underline; /* تعيين خط التسطير عند التحويم */
+}
+
+/* تنسيق صندوق المساعدة */
+.help-box {
+    position: fixed; /* تعيين العنصر كعنصر ثابت */
+    bottom: 50px; /* تعيين المسافة من أسفل الشاشة */
+    right: 50px; /* تعيين المسافة من يمين الشاشة */
+    width: 300px; /* عرض الصندوق */
+    padding: 20px; /* حشوة الصندوق الداخلية */
+    background: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* ظل الصندوق */
+    border-radius: 10px; /* حواف دائرية للصندوق */
+    display: none; /* إخفاء الصندوق افتراضيًا */
+}
+
+.help-box h3 {
+    margin-top: 0; /* إزالة الهامش العلوي */
+}
+
+#help-button {
+    position: fixed; /* تعيين العنصر كعنصر ثابت */
+    bottom: 10px; /* تعيين المسافة من أسفل الشاشة */
+    right: 10px; /* تعيين المسافة من يمين الشاشة */
+    background: #8400ff; /* لون الخلفية للزر */
+}

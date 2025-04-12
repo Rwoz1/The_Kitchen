@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar"> <!-- تحديد لغة الوثيقة كالعربية -->
+<head>
+    <meta charset="UTF-8"> <!-- تعيين ترميز الحروف كـ UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- تحسين العرض على الأجهزة المحمولة -->
+    <title>إنشاء حساب جديد</title> <!-- عنوان الصفحة -->
+    <link rel="stylesheet" href="styles.css"> <!-- ربط ملف التنسيق الخارجي -->
+</head>
+<body>
+    <div class="background"> <!-- خلفية النجوم -->
+        <div class="overlay"></div> <!-- تأثير الضبابية -->
+        <div class="login-box"> <!-- نموذج إنشاء حساب جديد -->
+            <h2>إنشاء حساب جديد</h2> <!-- عنوان النموذج -->
+            <form id="register-form" action="register.php" method="post"> <!-- نموذج لإرسال البيانات إلى register.php -->
+                <div class="textbox">
+                    <input type="text" placeholder="الاسم الأول" name="first-name" required> <!-- حقل إدخال الاسم الأول -->
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="الاسم الأخير" name="last-name" required> <!-- حقل إدخال الاسم الأخير -->
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="اسم المستخدم" name="username" required> <!-- حقل إدخال اسم المستخدم -->
+                </div>
+                <div class="textbox">
+                    <input type="email" placeholder="البريد الإلكتروني" name="email" required> <!-- حقل إدخال البريد الإلكتروني -->
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="رقم الهاتف" name="phone" required> <!-- حقل إدخال رقم الهاتف -->
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="كلمة المرور" name="password" required> <!-- حقل إدخال كلمة المرور -->
+                </div>
+                <button type="submit" class="btn">إنشاء حساب</button> <!-- زر الإرسال -->
+                <p>لديك حساب بالفعل؟ <a href="index.html">تسجيل الدخول</a></p> <!-- رابط لتسجيل الدخول -->
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- ربط ملف السكربت الخارجي -->
+</body>
+</html>

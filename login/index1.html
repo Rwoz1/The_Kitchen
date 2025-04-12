@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar"> <!-- تحديد لغة الوثيقة كالعربية -->
+<head>
+    <meta charset="UTF-8"> <!-- تعيين ترميز الحروف كـ UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- تحسين العرض على الأجهزة المحمولة -->
+    <title>تسجيل الدخول</title> <!-- عنوان الصفحة -->
+    <link rel="stylesheet" href="styles.css"> <!-- ربط ملف التنسيق الخارجي -->
+</head>
+<body>
+    
+    <div class="background"> <!-- خلفية النجوم -->
+        <div class="overlay"></div> <!-- تأثير الضبابية -->
+        <div class="login-box"> <!-- نموذج تسجيل الدخول -->
+            <h2>تسجيل الدخول</h2> <!-- عنوان النموذج -->
+            <form id="login-form" method="post" action="login.php"> <!-- نموذج لإرسال البيانات إلى login.php -->
+                <div class="textbox">
+                    <input type="text" placeholder="اسم المستخدم" name="username" required> <!-- حقل إدخال اسم المستخدم -->
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="كلمة المرور" name="password" required> <!-- حقل إدخال كلمة المرور -->
+                </div>
+                <div class="options">
+                    <label><input type="checkbox" name="remember"> تذكرني</label> <!-- خيار لتذكر المستخدم -->
+                    <a href="forgot-password.html">نسيت كلمة المرور؟</a> <!-- رابط لنسيان كلمة المرور -->
+                </div>
+                <button type="submit" class="btn">تسجيل الدخول</button> <!-- زر الإرسال -->
+                <p>ليس لديك حساب؟ <a href="register.html">إنشاء حساب جديد</a></p> <!-- رابط لإنشاء حساب جديد -->
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- ربط ملف السكربت الخارجي -->
+</body>
+</html>
+
+

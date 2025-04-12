@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
         <input type="file" name="image"><br><br>
 
         <button type="submit" name="update_product">تحديث المنتج</button>
-        <button type="submit"><a href="admin.php">العودة للصفحه</a></button>
+        <a href="admin.php"><button type="submit">العوده للصفه الرئيسية«</button></a>
     </form>
 
 </body>

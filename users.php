@@ -1,144 +1,119 @@
+<?php
+// الاتصال بقاعدة البيانات
+$conn = new mysqli("localhost", "root", "root", "fridge_manager");
+if ($conn->connect_error) {
+    die("فشل الاتصال: " . $conn->connect_error);
+}
+
+// جلب المنتجات من قاعدة البيانات
+$sql = "SELECT * FROM products ORDER BY expiry_date ASC";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة الطعام</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .search-bar {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .search-bar input {
-            padding: 10px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .search-bar button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .food-menu {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .food-item {
-            flex: 1 1 calc(33.333% - 40px);
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .food-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .food-item h3 {
-            margin: 10px;
-            font-size: 18px;
-        }
-        .food-item p {
-            margin: 10px;
-            color: #555;
-        }
-        .food-item .price {
-            margin: 10px;
-            font-size: 20px;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 20px;
-        }
-    </style>
+    <title>نظام إدارة الثلاجة</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- الهيدر -->
     <header>
-        <h1>wowFood</h1>
+        <img src="logo.png" alt="شعار الموقع" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">عن الموقع</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+                <li><a href="login/login.php" style="color: green; font-weight: bold;">تسجيل الدخول</a></li></ul>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Foods</a>
-        <a href="#">Contact</a>
-    </nav>
-
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Search for Food...">
-            <button>Search</button>
+    <!-- البحث -->
+    <section class="search-section">
+        <img src="bg.jpg" alt="خلفية" class="background">
+        <div class="search-box">
+            <input type="text" placeholder="ابحث عن منتج..." id="searchInput">
+            <button onclick="searchProduct()">بحث</button>
         </div>
+    </section>
 
-        <div class="food-menu">
-            <div class="food-item">
-                <img src="images/burger.jpg" alt="Burger">
-                <h3>Sandy Burger</h3>
-                <p>مصنوع مع الصلصة الإيطالية، الدجاج والخضروات العضوية.</p>
-                <div class="price">$2.3</div>
-            </div>
-            <div class="food-item">
-                <img src="images/pizza.jpg" alt="Pizza">
-                <h3>Pizza</h3>
-                <p>مصنوع مع الصلصة الإيطالية، الدجاج والخضروات العضوية.</p>
-                <div class="price">$2.3</div>
-            </div>
-            <div class="food-item">
-                <img src="images/momo.jpg" alt="Momo">
-                <h3>Chicken Steam Momo</h3>
-                <p>مصنوع مع الصلصة الإيطالية، الدجاج والخضروات العضوية.</p>
-                <div class="price">$2.3</div>
-            </div>
-        </div>
+    <!-- التصنيفات -->
+    <!-- التصنيفات -->
+<section class="categories">
+    <div class="category">
+        <img src="uploads/dairy.jpg" alt="ألبان">
+        <h3>ألبان</h3>
     </div>
+    <div class="category">
+        <img src="uploads/food.jpg" alt="مأكولات">
+        <h3>مأكولات</h3>
+    </div>
+    <div class="category">
+        <img src="uploads/drinks.jpg" alt="مشروبات">
+        <h3>مشروبات</h3>
+    </div>
+</section>
 
+    <!-- المنتجات -->
+    <section class="products">
+        <h2>المنتجات</h2>
+        <div class="product-list" id="productList">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $expiry_date = strtotime($row['expiry_date']);
+                    $today = time();
+                    $days_remaining = ceil(($expiry_date - $today) / (60 * 60 * 24));
+                    $color = ($days_remaining <= 30) ? "red" : "black";
+
+                    echo "<div class='product'>";
+                    echo "<img src='uploads/" . $row['image'] . "' alt='" . $row['name'] . "'>";                 
+                    echo "<h3 style='color: $color'>" . $row['name'] . "</h3>";
+                    echo "<p><strong>الكمية:</strong> " . $row['quantity'] . "</p>";
+                    echo "<p><strong>تاريخ الانتهاء:</strong> " . $row['expiry_date'] . "</p>";
+                    echo "<p><strong>ملاحظات:</strong> " . $row['notes'] . "</p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p>لا توجد منتجات متاحة</p>";
+            }
+            ?>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
     <footer>
-        <p>All rights reserved. Designed By Ylrey Thapa</p>
+        <p>جميع الحقوق محفوظة &copy; 2025</p>
+        <div class="social-media">
+            <a href="#">فيسبوك</a>
+            <a href="#">تويتر</a>
+            <a href="#">إنستجرام</a>
+        </div>
     </footer>
+
+    <script>
+        function searchProduct() {
+            var input, filter, products, product, name, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toLowerCase();
+            products = document.getElementsByClassName("product");
+
+            for (i = 0; i < products.length; i++) {
+                name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+                if (name.includes(filter)) {
+                    products[i].style.display = "";
+                } else {
+                    products[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
+
